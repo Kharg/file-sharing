@@ -1,0 +1,11 @@
+{
+    "name": "File Sharing",
+    "version": "1.0.0",
+    "type": "extension",
+    "acceptableVersions": [
+        ">=7.0.0"
+    ],
+    "releaseDate": "08/05/23",
+    "author": "Andrew Fontana",
+    "description": "Share Files Publicly"
+}

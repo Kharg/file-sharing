@@ -1,0 +1,74 @@
+{
+    "controller": "controllers/record",
+    "filterList": [
+      {
+          "name": "Active",
+          "style": "success"
+      },
+      {
+          "name": "Draft",
+          "style": "warning"
+      },
+      {
+          "name": "Expired",
+          "style": "info"
+      },
+      {
+          "name": "Canceled",
+          "style": "danger"
+      }
+  ],
+  "boolFilterList": [
+  ],
+    "sidePanels": {
+        "detail": [
+          {
+            "name": "information",
+            "label": "Information",
+            "isForm": true,
+            "view": "file-sharing:views/record/panels/information"
+          }
+        ],
+        "detailSmall": [
+            {
+              "name": "information",
+              "label": "Information",
+              "isForm": true,
+              "view": "file-sharing:views/record/panels/information"
+            }
+          ]
+      },
+      "menu": {
+        "detail": {
+            "buttons": [
+               {
+                   "label": "Open Url",
+                   "name": "OpenUrl",
+                   "action": "OpenUrl",
+                   "style": "info",
+                   "iconHtml": "<span class='fas fa-external-link-alt fa-sm'></span>",
+                   "acl": "read",
+                   "aclScope": "FileSharing",
+                   "data": {
+                       "handler": "file-sharing:sharing-handler"
+                   },
+                   "initFunction": "initFileSharing"
+                }
+            ]
+        }
+    },
+    "detailActionList": [
+        {
+            "label": "Generate New Token",
+            "name": "GenerateNewToken",
+            "action": "GenerateNewToken",
+            "acl": "edit",
+            "aclScope": "FileSharing",
+            "data": {
+                "handler": "file-sharing:token-handler"
+            },
+            "initFunction": "initGenerateToken"
+        }
+    ],
+    "iconClass": "fas fa-cloud-download-alt"
+}

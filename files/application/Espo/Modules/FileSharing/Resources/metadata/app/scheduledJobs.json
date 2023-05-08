@@ -1,0 +1,5 @@
+{
+    "FileSharingCheckExpiry": {
+        "jobClassName": "Espo\\Modules\\FileSharing\\Jobs\\FileSharingCheckExpiry"
+    }
+}

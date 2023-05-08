@@ -1,0 +1,7 @@
+{
+    "options": { 
+        "job": { 
+            "FileSharingCheckExpiry": "Controllo Scadenza File Sharing"
+        }
+    }
+ }
