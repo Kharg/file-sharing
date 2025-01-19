@@ -1,9 +1,9 @@
 {
     "name": "File Sharing",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "extension",
     "acceptableVersions": [
-        ">=7.0.0"
+        ">=8.1.0"
     ],
     "releaseDate": "08/05/23",
     "author": "Andrew Fontana",

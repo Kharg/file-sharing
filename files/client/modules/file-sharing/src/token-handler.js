@@ -1,33 +1,23 @@
-define('file-sharing:token-handler', ['action-handler'], function (Dep) {
-
-    return Dep.extend({
+define('file-sharing:token-handler', ['action-handler'], (Dep) => {
+    return class extends Dep {
   
-      actionGenerateNewToken: function () {
-        this.confirm(this.view.translate('confirmation', 'messages'), () => {
-            this.ajaxPostRequest('FileSharing/action/GenerateNewToken', {
-                id: this.view.model.id
-            }).then(response => {
-                Espo.Ui.success(this.view.translate('Done'));
-            });
-        });
-      },
+      generateNewToken() {
+        this.view.confirm(this.view.translate('confirmation', 'messages'), () => {
+          Espo.Ajax.postRequest('FileSharing/action/GenerateNewToken', {
+              id: this.view.model.id
+          }).then(response => {
+              Espo.Ui.success(this.view.translate('Done'));
+              //this.view.model.fetch();
+              this.view.model.trigger('newAccessToken');
+          });
+      });
+      }
   
-      initGenerateToken: function () {
-        this.controlButtonVisibility();
+      initGenerateNewToken() {}
   
-        this.view.listenTo(
-          this.view.model,
-          'change:accessToken',
-          this.controlButtonVisibility.bind(this)
-        );
-      },
-  
-      controlButtonVisibility: function () {
-        if (this.view.model.get('accessToken') != null) {
-          this.view.showActionItem('GenerateNewToken');
-        } else {
-          this.view.hideActionItem('GenerateNewToken');
-        }
-      },
-    });
+      isGenerateNewTokenVisible() {
+        return this.view.model.get('accessToken') != null;
+    }
+    
+    };
   });

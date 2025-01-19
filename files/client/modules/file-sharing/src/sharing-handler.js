@@ -1,29 +1,15 @@
-define('file-sharing:sharing-handler', ['action-handler'], function (Dep) {
+define('file-sharing:sharing-handler', ['action-handler'], (Dep) => {
+  return class extends Dep {
 
-  return Dep.extend({
-
-    actionOpenUrl: function () {
+    openUrl() {
       let url = this.view.model.get('entryPointUrl');
       window.open(url);
-      this.notify(false);
-    },
+      this.view.notify(false);
+    }
 
-    initFileSharing: function () {
-      this.controlButtonVisibility();
-
-      this.view.listenTo(
-        this.view.model,
-        'change:attachmentId',
-        this.controlButtonVisibility.bind(this)
-      );
-    },
-
-    controlButtonVisibility: function () {
-      if (this.view.model.get('attachmentId') != null) {
-        this.view.showHeaderActionItem('OpenUrl');
-      } else {
-        this.view.hideHeaderActionItem('OpenUrl');
-      }
-    },
-  });
+    isOpenUrlVisible() {
+      return this.view.model.get('attachmentId') != null;
+  }
+  
+  };
 });

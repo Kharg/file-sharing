@@ -43,6 +43,7 @@
         },
         "entryPointUrl": {
             "type": "varchar",
+            "copyToClipboard": true,
             "readOnly": true,
             "notStorable":true
         },

@@ -28,5 +28,11 @@
             "Expired": "Expired",
             "Canceled": "Canceled"
         }
+    },
+    "presetFilters": {
+        "Active": "Active",
+        "Draft": "Draft",
+        "Expired": "Expired",
+        "Canceled": "Canceled"
     }
 }

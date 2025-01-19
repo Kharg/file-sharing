@@ -2,10 +2,9 @@
 
 namespace Espo\Modules\FileSharing\Hooks\FileSharing;
 
-use Espo\Core\Hooks\Base;
 use Espo\ORM\Entity;
 
-class ValidTillStatus extends Base
+class ValidTillStatus
 {
     public function beforeSave(Entity $entity, array $options = [])
     {

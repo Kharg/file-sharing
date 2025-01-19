@@ -44,15 +44,13 @@
                {
                    "label": "Open Url",
                    "name": "OpenUrl",
-                   "action": "OpenUrl",
+                   "checkVisibilityFunction": "isOpenUrlVisible",
+                   "actionFunction": "openUrl",
                    "style": "info",
                    "iconHtml": "<span class='fas fa-external-link-alt fa-sm'></span>",
                    "acl": "read",
                    "aclScope": "FileSharing",
-                   "data": {
-                       "handler": "file-sharing:sharing-handler"
-                   },
-                   "initFunction": "initFileSharing"
+                   "handler": "file-sharing:sharing-handler"
                 }
             ]
         }
@@ -61,13 +59,11 @@
         {
             "label": "Generate New Token",
             "name": "GenerateNewToken",
-            "action": "GenerateNewToken",
+            "checkVisibilityFunction": "isGenerateNewTokenVisible",
+            "actionFunction": "generateNewToken",
             "acl": "edit",
             "aclScope": "FileSharing",
-            "data": {
-                "handler": "file-sharing:token-handler"
-            },
-            "initFunction": "initGenerateToken"
+            "handler": "file-sharing:token-handler"
         }
     ],
     "iconClass": "fas fa-cloud-download-alt"

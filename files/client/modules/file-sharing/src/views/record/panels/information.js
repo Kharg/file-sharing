@@ -1,21 +1,19 @@
-define('file-sharing:views/record/panels/information', 'views/record/panels/side', function (Dep) {
+define('file-sharing:views/record/panels/information', ['views/record/panels/side'], (Dep) => {
+    return class extends Dep {
 
-    return Dep.extend({
-
-        fieldList: [
+        fieldList = [
             'entryPointUrl',
             'accessToken',
             'accessCount',
-        ],
+        ]
 
-        setup: function () {
-            Dep.prototype.setup.call(this);
+        setup() {
+            super.setup();
 
-            this.listenTo(this.model, 'change:accessToken', () => {
+            this.listenTo(this.model, 'newAccessToken', () => {
                 this.model.fetch();
             });
-        },
+        }
 
-    });
-
+    };
 });

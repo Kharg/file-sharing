@@ -28,5 +28,11 @@
             "Expired": "Scaduto",
             "Canceled": "Annullato"
         }
+    },
+    "presetFilters": {
+        "Active": "Attivo",
+        "Draft": "Bozza",
+        "Expired": "Scaduto",
+        "Canceled": "Annullato"
     }
 }
