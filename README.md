@@ -25,8 +25,7 @@ After installation visit your settings and add the File Extension entity to the 
 
 ## Requires
 
-- EspoCRM >= 7.0
-- PHP >= 7.2
+- EspoCRM >= 8.1
 
 ## Installation
 
