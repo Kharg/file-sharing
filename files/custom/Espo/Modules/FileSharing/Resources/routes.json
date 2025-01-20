@@ -1,0 +1,10 @@
+[
+    {
+      "route": "/FileSharing/action/GenerateNewToken",
+      "method": "post",
+      "params": {
+        "controller": "GenerateToken",
+        "action": "GenerateNewToken"
+      }
+    }
+]

@@ -1,0 +1,38 @@
+{
+    "fields": {
+        "attachment": "Allegato",
+        "validTill": "Validità",
+        "forceFileDownload": "Forza Download",
+        "allowedUsage": "Download Consentiti",
+        "accessCount": "Conteggio Accessi",
+        "status": "Stato",
+        "entryPointUrl": "URL EntryPoint",
+        "accessToken": "Token Accesso"
+    },
+    "links": [],
+    "labels": {
+        "Create FileSharing": "Crea FileSharing",
+        "Open Url": "Apri Url",
+        "Generate New Token": "Genera Nuovo Token",
+        "Options": "Opzioni",
+        "Information": "Informazioni"
+    },
+    "tooltips": {
+        "allowedUsage": "Nega l'accesso una volta raggiunto l'utilizzo massimo consentito.\n\n0 significa nessun limite.",
+        "forceFileDownload": "Se impostato, il file verrà scaricato direttamente invece di essere visualizzato come anteprima nel browser."
+    },
+    "options": {
+        "status": {
+            "Active": "Attivo",
+            "Draft": "Bozza",
+            "Expired": "Scaduto",
+            "Canceled": "Annullato"
+        }
+    },
+    "presetFilters": {
+        "Active": "Attivo",
+        "Draft": "Bozza",
+        "Expired": "Scaduto",
+        "Canceled": "Annullato"
+    }
+}
