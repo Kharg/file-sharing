@@ -1,5 +1,0 @@
-{
-    "readLoaderClassNameList": [
-        "Espo\\Modules\\FileSharing\\Classes\\FieldProcessing\\FileSharing\\SetEntryPointUrl"
-    ]
-}

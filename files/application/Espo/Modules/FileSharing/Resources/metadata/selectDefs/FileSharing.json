@@ -1,8 +1,0 @@
-{
-       "primaryFilterClassNameMap": {
-              "Active": "Espo\\Modules\\FileSharing\\Classes\\Select\\PrimaryFilters\\Active",
-              "Draft": "Espo\\Modules\\FileSharing\\Classes\\Select\\PrimaryFilters\\Draft",
-              "Expired": "Espo\\Modules\\FileSharing\\Classes\\Select\\PrimaryFilters\\Expired",
-              "Canceled": "Espo\\Modules\\FileSharing\\Classes\\Select\\PrimaryFilters\\Canceled"
-        }
-}
