@@ -5,7 +5,6 @@ namespace Espo\Modules\FileSharing\EntryPoints;
 use Espo\Core\Exceptions\NotFound;
 use Espo\Core\Exceptions\Forbidden;
 use Espo\Core\Exceptions\BadRequest;
-use Espo\Core\EntryPoints\Base;
 use Espo\Core\ORM\EntityManager;
 use Espo\Core\Api\Request;
 use Espo\Core\Api\Response;
@@ -13,18 +12,13 @@ use Espo\Entities\Attachment as AttachmentEntity;
 use Espo\Core\FileStorage\Manager as FileStorageManager;
 use Espo\Core\EntryPoint\Traits\NoAuth;
 
-class FileSharing extends Base
+class FileSharing
 {
     use NoAuth;
 
-    protected function getEntityManager(): EntityManager
+    public function __construct(protected FileStorageManager $fileStorageManager, protected EntityManager $entityManager)
     {
-        return $this->getContainer()->get('entityManager');
-    }
-
-    protected function fileStorageManager(): fileStorageManager
-    {
-        return $this->getContainer()->get('fileStorageManager');
+        $this->entityManager = $entityManager;
     }
 
     public function run(Request $request, Response $response): void
@@ -34,7 +28,7 @@ class FileSharing extends Base
             throw new BadRequest("Missing 'id' parameter.");
         }
         
-        $fileSharing = $this->getEntityManager()->getEntity('FileSharing', $id);
+        $fileSharing = $this->entityManager->getEntity('FileSharing', $id);
         if (!$fileSharing) {
             throw new NotFound("FileSharing entity with ID '{$id}' not found.");
         }
@@ -67,20 +61,20 @@ class FileSharing extends Base
         if (!$attachmentId) {
             throw new NotFound("Attachment not found for FileSharing entity with ID '{$id}'.");
         }
-        $attachment = $this->getEntityManager()->getEntityById(AttachmentEntity::ENTITY_TYPE, $attachmentId);
-        $stream = $this->fileStorageManager()->getStream($attachment);
+        $attachment = $this->entityManager->getEntityById(AttachmentEntity::ENTITY_TYPE, $attachmentId);
+        $stream = $this->fileStorageManager->getStream($attachment);
         if (!$attachment) {
             throw new NotFound("Attachment with ID '{$attachmentId}' not found.");
         }
 
-        $filePath = $this->getEntityManager()->getRepository('Attachment')->getFilePath($attachment);
+        $filePath = $this->entityManager->getRepository('Attachment')->getFilePath($attachment);
         if (!$filePath) {
             throw new NotFound("File not found on the server.");
         }
 
         $fileName = $attachment->getName();
         $fileType = $attachment->getType();
-        $size = $stream->getSize() ?? $this->fileStorageManager()->getSize($attachment);
+        $size = $stream->getSize() ?? $this->fileStorageManager->getSize($attachment);
         $forceFileDownload = $fileSharing->get('forceFileDownload');
     
      $accessCount = $fileSharing->get('accessCount');
@@ -91,7 +85,7 @@ class FileSharing extends Base
      // Increment the accessCount field
     $accessCount = $fileSharing->get('accessCount');
     $fileSharing->set('accessCount', $accessCount + 1);
-    $this->getEntityManager()->saveEntity($fileSharing);
+    $this->entityManager->saveEntity($fileSharing);
 
         $this->downloadFile($response, $stream, $fileName, $fileType, $forceFileDownload, $size);
     }
